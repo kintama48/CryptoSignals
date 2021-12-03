@@ -56,23 +56,23 @@ async def signals():
             print("count = 1")
             embed = signals_helper(response['signals'][0])
             print(response)
-            try:
-                telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=create_telegram_msg(response['signals'][0]),
+#             try:
+            telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=create_telegram_msg(response['signals'][0]),
                                           parse_mode=telegram.ParseMode.MARKDOWN_V2)
-            except Exception:
-                print(Exception)
+#             except Exception:
+#                 print(Exception)
             for channel in channels:
                 await channel.send(embed=embed)
             await asyncio.sleep(30)
         else:
             for i in response['signals']:
                 embed = signals_helper(i)
-                try:
-                    telegram_bot.send_message(chat_id=config['telegram_channel_id'],
+#                 try:
+                telegram_bot.send_message(chat_id=config['telegram_channel_id'],
                                               text=create_telegram_msg(response['signals'][0]),
                                               parse_mode=telegram.ParseMode.MARKDOWN_V2)
-                except Exception:
-                    print(Exception)
+#                 except Exception:
+#                     print(Exception)
                 for channel in channels:
                     await channel.send(embed=embed)
             await asyncio.sleep(30)
