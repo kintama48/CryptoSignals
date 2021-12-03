@@ -5,5 +5,5 @@
   "telegram_token": "5088097252:AAEAJXXWgqMWtNamV5oRAZvAroEPd9oTMFM",
   "discord_channel_ids": [905412548768174080],
   "signals_api_endpoint": "https://api.cryptoqualitysignals.com/v1/getSignal/?api_key=FREE&interval=1",
-  "telegram_channel_id": -730453456
+  "telegram_channel_id": -1001259604800
 }
