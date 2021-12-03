@@ -139,6 +139,7 @@ def create_telegram_msg(signal):
             text += f"⚠ *Risk: 4/5 MEDIUM HIGH*"
         elif int(signal['risk_level']) == 5:
             text += f"⚠ *Risk: 5/5 HIGH*"
+    return text 
 
 
 def convert_time_stamp(time):
