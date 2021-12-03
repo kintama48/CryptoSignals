@@ -69,17 +69,17 @@ def signals_helper(signal):
             inline=False
         )
 
-    embed.add_field(
-        name=f"💰 Volume #{signal['currency']}: {get_volume(signal['currency'])}$",
-        value=chr(173),
-        inline=False
-    )
+#     embed.add_field(
+#         name=f"💰 Volume #{signal['currency']}: {get_volume(signal['currency'])}$",
+#         value=chr(173),
+#         inline=False
+#     )
 
-    embed.add_field(
-        name=f"💰 Volume #{signal['coin']}: {get_volume(signal['coin'])}$",
-        value=chr(173),
-        inline=False
-    )
+#     embed.add_field(
+#         name=f"💰 Volume #{signal['coin']}: {get_volume(signal['coin'])}$",
+#         value=chr(173),
+#         inline=False
+#     )
 
     embed.add_field(name=chr(173), value=chr(173))
 
@@ -118,27 +118,25 @@ def signals_helper(signal):
 
 
 def create_telegram_msg(signal):
-    text = f"🔥🔥🔥*Crypto Quality Signals*🔥🔥🔥\n\n" \
-           f"*{convert_time_stamp(signal['timestamp'])}*\n\n" \
-           f"💎 *Buy #{signal['coin']}/#{signal['currency']}*\n\n" \
-           f"🛒 *Entry Zone: {round(float(signal['buy_start']), 9)}-{round(float(signal['buy_end']), 9)}*\n" \
-           f"💵 *Current ask: {round(float(signal['ask']), 9)}*\n" \
-           f"🎯 *Target 1: {round(float(signal['target1']), 9)} ({round((float(signal['buy_end']) - float(signal['target1'])) / float(signal['buy_end']) * 100, 2) * -1}%)*\n" \
-           f"🎯 *Target 2: {round(float(signal['target2']), 9)} ({round((float(signal['buy_end']) - float(signal['target2'])) / float(signal['buy_end']) * 100, 2) * -1}%)*\n" \
-           f"🎯 *Target 3: {round(float(signal['target3']), 9)} ({round(((float(signal['buy_end']) - float(signal['target3'])) / float(signal['buy_end']) * 100), 2) * -1}%)*\n\n" \
-           f"🚫 *Stop loss: {round(float(signal['stop_loss']), 9)} ({round(((float(signal['stop_loss']) - float(signal['buy_end'])) / float(signal['buy_end'])) * 100, 2)}%)*\n\n" \
-           f"💰 *Volume #{signal['currency']}: {get_volume(signal['currency'])}$*\n" \
-           f"💰 *Volume #{signal['coin']}: {get_volume(signal['coin'])}$*\n\n" \
-           f"⏳ *{signal['type']}*\n\n"
+    text = f"🔥🔥Crypto Quality Signals🔥🔥\n\n" \
+           f"{convert_time_stamp(signal['timestamp'])}\n\n" \
+           f"💎 Buy #{signal['coin']}/#{signal['currency']}*\n\n" \
+           f"🛒 Entry Zone: {round(float(signal['buy_start']), 9)}-{round(float(signal['buy_end']), 9)}\n" \
+           f"💵 Current ask: {round(float(signal['ask']), 9)}\n" \
+           f"🎯 Target 1: {round(float(signal['target1']), 9)} ({round((float(signal['buy_end']) - float(signal['target1'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
+           f"🎯 Target 2: {round(float(signal['target2']), 9)} ({round((float(signal['buy_end']) - float(signal['target2'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
+           f"🎯 Target 3: {round(float(signal['target3']), 9)} ({round(((float(signal['buy_end']) - float(signal['target3'])) / float(signal['buy_end']) * 100), 2) * -1}%)\n\n" \
+           f"🚫 *Stop loss: {round(float(signal['stop_loss']), 9)} ({round(((float(signal['stop_loss']) - float(signal['buy_end'])) / float(signal['buy_end'])) * 100, 2)}%)\n\n" \
+           f"⏳ {signal['type']}\n\n"
     if "risk_level" in signal:
         if int(signal['risk_level']) <= 2:
-            text += f"⚠ *Risk: {signal['risk_level']}/5 LOW*"
+            text += f"⚠ Risk: {signal['risk_level']}/5 LOW"
         elif int(signal['risk_level']) == 3:
-            text += f"⚠ *Risk: 3/5 MEDIUM*"
+            text += f"⚠ Risk: 3/5 MEDIUM"
         elif int(signal['risk_level']) == 4:
-            text += f"⚠ *Risk: 4/5 MEDIUM HIGH*"
+            text += f"⚠ Risk: 4/5 MEDIUM HIGH"
         elif int(signal['risk_level']) == 5:
-            text += f"⚠ *Risk: 5/5 HIGH*"
+            text += f"⚠ Risk: 5/5 HIGH"
     return text 
 
 
