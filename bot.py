@@ -57,8 +57,7 @@ async def signals():
             embed = signals_helper(response['signals'][0])
             print(response)
 #             try:
-            text = create_telegram_msg(response['signals'][0])
-            telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=text,
+            telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=create_telegram_msg(response['signals'][0]),
                                           parse_mode=telegram.ParseMode.MARKDOWN_V2)
 #             except Exception:
 #                 print(Exception)
@@ -69,8 +68,7 @@ async def signals():
             for i in response['signals']:
                 embed = signals_helper(i)
 #                 try:
-                text = create_telegram_msg(i)
-                telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=text,
+                telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=create_telegram_msg(i),
                                           parse_mode=telegram.ParseMode.MARKDOWN_V2)
 #                 except Exception:
 #                     print(Exception)
