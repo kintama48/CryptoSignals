@@ -33,7 +33,7 @@ def signals_helper(signal):
     embed.add_field(name=chr(173), value=chr(173))
 
     embed.add_field(
-        name=f"🛒 Entry Zone: {round(float(signal['buy_start']), 9)}-{round(float(signal['buy_end']), 9)}",
+        name=f"🛒 Entry Zone: {round(float(signal['buy_start']), 9)} - {round(float(signal['buy_end']), 9)}",
         value=chr(173),
         inline=False
     )
@@ -120,8 +120,8 @@ def signals_helper(signal):
 def create_telegram_msg(signal):
     text = f"🔥🔥Crypto Quality Signals🔥🔥\n\n" \
            f"{convert_time_stamp(signal['timestamp'])}\n\n" \
-           f"💎 Buy #{signal['coin']}/#{signal['currency']}*\n\n" \
-           f"🛒 Entry Zone: {round(float(signal['buy_start']), 9)}-{round(float(signal['buy_end']), 9)}\n" \
+           f"💎 Buy #{signal['coin']}/#{signal['currency']}\n\n" \
+           f"🛒 Entry Zone: {round(float(signal['buy_start']), 9)} -- {round(float(signal['buy_end']), 9)}\n" \
            f"💵 Current ask: {round(float(signal['ask']), 9)}\n" \
            f"🎯 Target 1: {round(float(signal['target1']), 9)} ({round((float(signal['buy_end']) - float(signal['target1'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
            f"🎯 Target 2: {round(float(signal['target2']), 9)} ({round((float(signal['buy_end']) - float(signal['target2'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
