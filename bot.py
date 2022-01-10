@@ -54,27 +54,29 @@ async def signals():
     print(response)
     if response['signals']:
         if response['count'] == 1:
-            print("count = 1")
-            embed = signals_helper(response['signals'][0])
-            print(response)
-#             try:
-            telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=escape_markdown(create_telegram_msg(response['signals'][0]), version=2),
-                                          parse_mode=telegram.ParseMode.MARKDOWN_V2)
-#             except Exception:
-#                 print(Exception)
-            for channel in channels:
-                await channel.send(embed=embed)
-            await asyncio.sleep(30)
-        else:
-            for i in response['signals']:
-                embed = signals_helper(i)
-#                 try:
-                telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=escape_markdown(create_telegram_msg(i), version=2),
-                                          parse_mode=telegram.ParseMode.MARKDOWN_V2)
-#                 except Exception:
-#                     print(Exception)
+            if (response['signals'][0]['currency']).lower() == "usdt":
+                print("count = 1")
+                embed = signals_helper(response['signals'][0])
+                print(response)
+    #             try:
+                telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=escape_markdown(create_telegram_msg(response['signals'][0]), version=2),
+                                              parse_mode=telegram.ParseMode.MARKDOWN_V2)
+    #             except Exception:
+    #                 print(Exception)
                 for channel in channels:
                     await channel.send(embed=embed)
+                await asyncio.sleep(30)
+        else:
+            for i in response['signals']:
+                if i['currency'].lower() == "usdt":
+                    embed = signals_helper(i)
+    #                 try:
+                    telegram_bot.send_message(chat_id=config['telegram_channel_id'], text=escape_markdown(create_telegram_msg(i), version=2),
+                                              parse_mode=telegram.ParseMode.MARKDOWN_V2)
+    #                 except Exception:
+    #                     print(Exception)
+                    for channel in channels:
+                        await channel.send(embed=embed)
             await asyncio.sleep(30)
 
 
