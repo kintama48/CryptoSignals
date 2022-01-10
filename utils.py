@@ -126,7 +126,7 @@ def create_telegram_msg(signal):
            f"🎯 Target 1: {round(float(signal['target1']), 9)} ({round((float(signal['buy_end']) - float(signal['target1'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
            f"🎯 Target 2: {round(float(signal['target2']), 9)} ({round((float(signal['buy_end']) - float(signal['target2'])) / float(signal['buy_end']) * 100, 2) * -1}%)\n" \
            f"🎯 Target 3: {round(float(signal['target3']), 9)} ({round(((float(signal['buy_end']) - float(signal['target3'])) / float(signal['buy_end']) * 100), 2) * -1}%)\n\n" \
-           f"🚫 *Stop loss: {round(float(signal['stop_loss']), 9)} ({round(((float(signal['stop_loss']) - float(signal['buy_end'])) / float(signal['buy_end'])) * 100, 2)}%)\n\n" \
+           f"🚫 Stop loss: {round(float(signal['stop_loss']), 9)} ({round(((float(signal['stop_loss']) - float(signal['buy_end'])) / float(signal['buy_end'])) * 100, 2)}%)\n\n" \
            f"⏳ {signal['type']}\n\n"
     if "risk_level" in signal:
         if int(signal['risk_level']) <= 2:
